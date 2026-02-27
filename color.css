@@ -1,0 +1,448 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@600&display=swap');
+
+/* ---- CSS Variables ---- */
+:root {
+  --bg:          #0f1923;
+  --surface:     #162230;
+  --surface2:    #1e2f40;
+  --border:      #263546;
+  --accent:      #38c9b0;
+  --accent-dim:  #1e7a6d;
+  --accent-glow: rgba(56, 201, 176, 0.15);
+  --text:        #e8f0f7;
+  --text-muted:  #7a9ab5;
+  --danger:      #e05c6b;
+  --warning:     #f0a045;
+  --success:     #38c9b0;
+  --radius:      10px;
+  --shadow:      0 4px 24px rgba(0,0,0,0.35);
+  --transition:  0.2s ease;
+}
+
+/* ---- Reset & Base ---- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 15px; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  padding: 0;
+  line-height: 1.6;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 10% 0%, rgba(56, 201, 176, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 90% 100%, rgba(56, 201, 176, 0.04) 0%, transparent 50%);
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color var(--transition), opacity var(--transition);
+}
+a:hover { color: #fff; opacity: 0.9; }
+
+/* ---- Navigation ---- */
+nav, body > div:first-of-type {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.3);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Target the nav div specifically */
+body > div {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.3);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+body > div a {
+  display: inline-block;
+  padding: 16px 14px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-bottom: 2px solid transparent;
+  transition: color var(--transition), border-color var(--transition);
+}
+
+body > div a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  opacity: 1;
+}
+
+body > div hr { display: none; }
+
+/* ---- Main Content Wrapper ---- */
+body > h2,
+body > p,
+body > ul,
+body > table,
+body > form {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Wrap all page content after nav */
+body {
+  padding-bottom: 60px;
+}
+
+/* ---- Page Title ---- */
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.9rem;
+  font-weight: 600;
+  color: var(--text);
+  padding: 36px 32px 8px;
+  max-width: 960px;
+  margin: 0 auto;
+  letter-spacing: -0.01em;
+}
+
+h2::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+  margin-top: 8px;
+}
+
+/* ---- Dashboard Stats (ul on index.php) ---- */
+ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+  max-width: 960px;
+  margin: 28px auto 0;
+  padding: 0 32px;
+}
+
+ul li {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  box-shadow: var(--shadow);
+  transition: border-color var(--transition), transform var(--transition);
+}
+
+ul li:hover {
+  border-color: var(--accent-dim);
+  transform: translateY(-2px);
+}
+
+ul li b {
+  display: block;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-top: 6px;
+  font-family: 'DM Sans', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* ---- Quick Links / Paragraph ---- */
+p {
+  max-width: 960px;
+  margin: 20px auto 0;
+  padding: 0 32px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+p a {
+  display: inline-block;
+  background: var(--accent);
+  color: #0f1923;
+  font-weight: 600;
+  font-size: 0.82rem;
+  padding: 7px 16px;
+  border-radius: 6px;
+  letter-spacing: 0.03em;
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+  box-shadow: 0 2px 12px rgba(56,201,176,0.25);
+}
+
+p a:hover {
+  background: #fff;
+  color: #0f1923;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(56,201,176,0.35);
+  opacity: 1;
+}
+
+/* ---- Tables ---- */
+table {
+  width: calc(100% - 64px);
+  max-width: 960px;
+  margin: 24px auto 0;
+  border-collapse: collapse;
+  background: var(--surface);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+/* Remove the default border="1" look */
+table[border] { border: 1px solid var(--border) !important; }
+
+th {
+  background: var(--surface2);
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 14px 18px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+td {
+  padding: 13px 18px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  vertical-align: middle;
+}
+
+tr:last-child td { border-bottom: none; }
+
+tr:hover td {
+  background: rgba(56, 201, 176, 0.04);
+}
+
+/* Action links inside tables */
+td a {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  border: 1px solid transparent;
+  transition: all var(--transition);
+}
+
+/* Edit link */
+td a[href*="edit"] {
+  color: var(--accent);
+  border-color: var(--accent-dim);
+  background: rgba(56, 201, 176, 0.08);
+}
+td a[href*="edit"]:hover {
+  background: var(--accent);
+  color: #0f1923;
+  opacity: 1;
+}
+
+/* Deactivate / delete link */
+td a[href*="delete"],
+td a[href*="deactivate"],
+td a[onclick] {
+  color: var(--danger);
+  border-color: rgba(224, 92, 107, 0.3);
+  background: rgba(224, 92, 107, 0.08);
+}
+td a[href*="delete"]:hover,
+td a[href*="deactivate"]:hover,
+td a[onclick]:hover {
+  background: var(--danger);
+  color: #fff;
+  opacity: 1;
+}
+
+/* Status badges */
+td:has(+ td) {
+  /* plain text status */
+}
+
+/* ---- Status Text Styling ---- */
+/* We style "Active" / "Inactive" text in tables */
+tr td:nth-child(4) {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+/* ---- Forms ---- */
+form {
+  max-width: 520px;
+  margin: 28px auto 0;
+  padding: 32px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+textarea,
+select {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 10px 14px;
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.92rem;
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+input::placeholder,
+textarea::placeholder { color: var(--text-muted); opacity: 0.6; }
+
+textarea { resize: vertical; min-height: 100px; }
+
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a9ab5' fill='none' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+select option { background: var(--surface2); }
+
+/* Spacing between form fields (br+br workaround) */
+form br { display: none; }
+
+form label + input,
+form label + textarea,
+form label + select {
+  margin-bottom: 20px;
+}
+
+/* ---- Buttons ---- */
+button[type="submit"],
+button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent);
+  color: #0f1923;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 0.88rem;
+  letter-spacing: 0.04em;
+  padding: 11px 28px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 14px rgba(56,201,176,0.3);
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+  margin-top: 8px;
+}
+
+button:hover {
+  background: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(56,201,176,0.4);
+}
+
+button:active { transform: translateY(0); }
+
+/* ---- Error / Success Messages ---- */
+p[style*="color:red"],
+p[style*="color: red"] {
+  background: rgba(224, 92, 107, 0.12);
+  border: 1px solid rgba(224, 92, 107, 0.35);
+  border-radius: 7px;
+  padding: 10px 14px;
+  color: #f08090 !important;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+/* ---- HR (hide in nav) ---- */
+hr {
+  display: none;
+}
+
+/* ---- Scrollbar ---- */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-dim); }
+
+/* ---- Fade-in Animation ---- */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+h2, form, table, ul, p {
+  animation: fadeUp 0.4s ease both;
+}
+
+h2                { animation-delay: 0.05s; }
+p                 { animation-delay: 0.10s; }
+ul, table, form   { animation-delay: 0.15s; }
+
+/* ---- Responsive ---- */
+@media (max-width: 640px) {
+  body > div { padding: 0 12px; }
+  h2, p      { padding-left: 16px; padding-right: 16px; }
+  ul         { padding: 0 16px; grid-template-columns: 1fr 1fr; }
+  table      { width: calc(100% - 32px); font-size: 0.8rem; }
+  td, th     { padding: 10px 12px; }
+  form       { margin: 16px; padding: 20px; }
+}
